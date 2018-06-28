@@ -29,7 +29,9 @@ package com.formation;
 //Par exemple, l'appel max (new double[][] {{}, {1, 2}, {3}, {4, 5, 6, 7}, {}});renvoie 7.0.
 
 public class TPJeudi28Juin {
+
     public static void main(String[] args) {
+
         Integer[] tab = {9, 10, -9, 50, -800};
         //Somme
         System.out.println(sum(tab));
@@ -42,6 +44,8 @@ public class TPJeudi28Juin {
         affichageMatrice(db);
         double m = max(db);
         System.out.println("Mon max est : " + m);
+        System.out.println("nxdb,bc");
+
     }
 
 
