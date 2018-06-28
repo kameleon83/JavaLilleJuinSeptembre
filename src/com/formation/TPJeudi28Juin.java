@@ -22,19 +22,30 @@ package com.formation;
 //
 //Par exemple, l'appel merge (new int[] {1, 2, 3, 4}, new int[] {5, 6}); renvoie le tableau [1, 5, 2, 6, 3, 4].
 
+//Exercices 4 :
+//
+//	Écrire une méthode max qui prend comme paramètre un tableau de flottants double à deux dimensions et qui renvoie la plus grand élément de ce tableau. Attention, le tableau peut être vide et n'est pas nécessairement rectangulaire. Si le tableau est vide, la méthode doit renvoyer l'infini négatif.
+//
+//Par exemple, l'appel max (new double[][] {{}, {1, 2}, {3}, {4, 5, 6, 7}, {}});renvoie 7.0.
+
 public class TPJeudi28Juin {
     public static void main(String[] args) {
-        Integer[] tab = {9,10,-9,50,-800};
+        Integer[] tab = {9, 10, -9, 50, -800};
         //Somme
         System.out.println(sum(tab));
-        Double[] tab2 = {9.5,-20.7, 100.71, 26.87};
+        Double[] tab2 = {9.5, -20.7, 100.71, 26.87};
         System.out.println(min(tab2));
-        affichage(merge(new Integer[]{1,2,3,4}, new Integer[]{5,6}));
+        affichage(merge(new Integer[]{1, 2, 3, 4}, new Integer[]{5, 6}));
+        double max = Double.MIN_VALUE;
 
+        double[][] db = new double[5][7];
+        affichageMatrice(db);
+        double m = max(db);
+        System.out.println("Mon max est : " + m);
     }
 
 
-    public static int sum(Integer[] tab){
+    public static int sum(Integer[] tab) {
         int somme = 0;
         for (int i = 0; i < tab.length; i++) {
             somme += tab[i];
@@ -42,7 +53,7 @@ public class TPJeudi28Juin {
         return somme;
     }
 
-    public static Double min(Double[] tab){
+    public static Double min(Double[] tab) {
         Double min = tab[0];
         for (int i = 0; i < tab.length; i++) {
             if (min > tab[i]) {
@@ -51,7 +62,8 @@ public class TPJeudi28Juin {
         }
         return min;
     }
-    public static int max(Integer[] tab){
+
+    public static int max(Integer[] tab) {
         int somme = 0;
         for (int i = 0; i < tab.length; i++) {
             somme += tab[i];
@@ -59,18 +71,18 @@ public class TPJeudi28Juin {
         return somme;
     }
 
-    public static Integer[] merge(Integer[] tab1,Integer[] tab2){
+    public static Integer[] merge(Integer[] tab1, Integer[] tab2) {
         Integer[] tab3 = new Integer[tab1.length + tab2.length];
         int global = 0;
         int iteTab = 0;
 
-        while(global< tab3.length){
-            if (iteTab < tab1.length){
+        while (global < tab3.length) {
+            if (iteTab < tab1.length) {
                 tab3[global++] = tab1[iteTab];
                 //tab3[global] = tab1[iteTab];
                 //global++;
             }
-            if (iteTab < tab2.length){
+            if (iteTab < tab2.length) {
                 tab3[global++] = tab2[iteTab];
                 //tab3[global] = tab2[iteTab];
                 //global++;
@@ -81,11 +93,50 @@ public class TPJeudi28Juin {
         return tab3;
     }
 
+    // Exercice 4
+    public static double max(double[][] tab) {
+        double max = Double.MIN_VALUE;
+        if (checkIfNotEmptyTab(tab)){
+            for (double[] row : tab) {
+                for (double col : row){
+                    if (max < col){
+                        max = col;
+                    }
+                }
+            }
+        }else{
+            System.out.println("test");
+            return Double.NEGATIVE_INFINITY;
+        }
+        return max;
+    }
+
+    public static boolean checkIfNotEmptyTab(double[][] tab){
+        if (tab.length > 0){
+            for (int i = 0; i < tab.length; i++) {
+                if (tab[i].length > 0){
+                    for (int j = 0; j < tab[i].length; j++) {
+                        if (tab[i][j] != 0.0d){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
 
-    public static void affichage(Number[] tab){
+    public static void affichage(Number[] tab) {
         for (int i = 0; i < tab.length; i++) {
             System.out.println(tab[i]);
+        }
+    }
+    public static void affichageMatrice(double[][] tab) {
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab[i].length; j++) {
+                System.out.println(tab[i][j]);
+            }
         }
     }
 
