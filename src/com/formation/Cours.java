@@ -1,13 +1,9 @@
 package com.formation;
 
-import java.util.List;
-
 public class Cours {
     private String nom;
     private Short heure;
     private Byte annee;
-
-
 
     public String getNom() {
         return nom;

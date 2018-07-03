@@ -19,9 +19,7 @@ public class Ecole {
                 if (eleve.getAnnee().equals(cours.getAnnee())) {
                     System.out.printf("Pour le cours de %s : nous avons l'élève :%n",cours.getNom());
                     System.out.println("    - " + eleve.getNom());
-
                 }
-
             }
         }
     }
